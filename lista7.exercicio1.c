@@ -1,0 +1,1 @@
+/*Ele vai imprimir o valor de f1 (2), f2 (2) e f3(3), alem da do calculo da variavel main, ou v, (3)*/

@@ -1,0 +1,1 @@
+/*O programa dara a resposta 10 20 30 40 50 (todos os valores do vetor numbers)*/

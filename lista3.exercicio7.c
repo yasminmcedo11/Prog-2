@@ -1,0 +1,1 @@
+/*A afirmativa d (pti[1] = 10) é falsa, pois o indice 1 se refere ao segundo elemento do vetor.*/
