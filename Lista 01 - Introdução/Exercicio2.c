@@ -1,112 +1,97 @@
 #include <stdio.h>
 
-/*Receber 3 valores inteiros e imprimir o maior, menor, média e valores pares*/
+//Receber 3 valores inteiros e imprimir o maior, menor, média e valores pares
 
-int calcular_maior (int a, int b, int c);
-int calcular_menor (int a, int b, int c);
-float calcular_media (int a, int b, int c);
-int descobrir_par (int a, int b, int c);
+int calcula_maior(int a, int b, int c);
+int calcula_menor(int a, int b, int c);
+float calcula_media(int a, int b, int c);
+int descobre_pares(int a, int b, int c);
 
-int main () {
-    int a, b, c, maior, menor, pares; 
+int main() {
+    int v1, v2, v3, maior, menor, qtd_pares;
     float media;
-    do {
-       printf("Digite 3 numeros inteiros: \n");
-       scanf("%d %d %d", &a, &b, &c); 
-    } while ((a < 0) || (b < 0) || (c < 0)); 
-    maior = calcular_maior(a, b, c);
-    menor = calcular_menor(a, b, c);
-    media = calcular_media(a, b, c);
-    pares = descobrir_par(a, b, c);
+    printf("Digite os 3 numeros que deseja analisar: \n");
+    scanf("%d %d %d", &v1, &v2, &v3);
 
-    if (pares == 1) {
-        int par1; 
-        if (a%2 == 0)
-            par1 = a;
-        if (b%2 == 0)
-            par1 = b;
-        if (c%2 == 0)
-            par1 = c;        
-        printf("O maior valor e %d, menor valor e %d, os pares sao %d e a media e %f\n", maior, menor, par1, media);
-    }
-    if (pares == 2) {
+    maior = calcula_maior(v1, v2, v3);
+    menor = calcula_menor(v1, v2, v3);
+    media = calcula_media(v1, v2, v3);
+    qtd_pares = descobre_pares(v1, v2, v3);
+    if (qtd_pares == 3) {
+        printf("Os pares sao %d, %d, %d.\n", v1, v2, v3);
+    } else if (qtd_pares == 2) {
         int par1, par2;
-        if (a%2 != 0) {
-            par1 = b;
-            par2 = c;
+        if (v1 % 2 == 0) {
+            par1 = v1;
+            if (v2 % 2 == 0) {
+                par2 = v2;
+            } else {
+                par2 = v3;
+            }
+        } else {
+            par1 = v2;
+            par2 = v3;
         }
-        if (b%2 != 0) {
-            par1 = a;
-            par2 = c;
+        printf("Os pares sao %d, %d.\n", par1, par2);
+    } else if (qtd_pares == 1) {
+        int par;
+        if (v1 % 2 == 0) {
+            par = v1;
+        } else if (v2 % 2 == 0) {
+            par = v2;
+        } else {
+            par = v3;
         }
-        if (c%2 != 0) {
-            par1 = a;
-            par2 = b;
-        }
+        printf("O par e %d.\n", par);
+    } else if (qtd_pares == 0) {
+        printf("Nao ha numeros pares.\n");
+    }
 
-        printf("O maior valor e %d, menor valor e %d, os pares sao %d, %d e a media e %f\n", maior, menor, par1, par2, media);
-    }
-    if (pares == 3) {
-        printf("O maior valor e %d, menor valor e %d, os pares sao %d, %d, %d, a media e %f\n", maior, menor, a, b, c, media);
-    }
-    if (pares == 0) {
-        printf("O maior valor e %d, menor valor e %d, a media e %f e nao ha valores pares.", maior, menor, media);
-    }
-
+    printf("Maior = %d, Menor = %d, Media = %.2f", maior, menor, media);
     return 0;
 }
 
-int calcular_maior (int a, int b, int c) {
-    int maior;
-    if (a > b) {
-        maior = a;
-        if (c > a) {
-            maior = c;
-        }
+int calcula_menor(int n1, int n2, int n3) {
+    int menor = n1;
+    if (menor > n2) {
+        menor = n2;
     }
-    else {
-        maior = b;
-        if (c > b) {
-            maior = c;
-        }
+    if (menor > n3) {
+        menor = n3;
+    }
+
+    return menor;
+}
+
+int calcula_maior(int n1, int n2, int n3) {
+    int maior = n1;
+    if (maior < n2) {
+        maior = n2;
+    } 
+    if (maior < n3) {
+        maior = n3;
     }
 
     return maior;
 }
 
-int calcular_menor (int a, int b, int c) {
-    int menor;
-    if (a > b) {  
-       menor = b;
-       if (b > c) {
-           menor = c;
-       }
-    }
-    else {
-        menor = a;
-        if (a > c) {
-            menor = c;
-        }
-    }
-    return menor;
-}
+float calcula_media(int n1, int n2, int n3) {
+    float media = (n1 + n2 + n3)/3.0;
 
-float calcular_media (int a, int b, int c) {
-    float media;
-    media = (a + b + c)/3.0;
     return media;
 }
 
-int descobrir_par (int a, int b, int c) {
+int descobre_pares(int n1, int n2, int n3) {
     int pares = 0;
-    if (a%2 == 0) {
-        pares += 1;
+    if (n1 % 2 == 0) {
+        pares++;
     }
-    if (b%2 == 0) {
-        pares += 1;
+    if (n2 % 2 == 0) {
+        pares++;
     }
-    if (c%2 == 0) {
-        pares += 1;
+    if(n3 % 2 == 0) {
+        pares++;
     }
+
     return pares;
 }

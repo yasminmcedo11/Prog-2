@@ -1,29 +1,32 @@
 #include <stdio.h>
 
-/*Receber 1 operação (+,-,*,/) e 2 números e imprimir o resultado da operação*/
+//Receber 1 operação (+,-,*,/) e 2 números e imprimir o resultado da operação
 
-int main () {
-    float a, b;
-    char sinal;
-    printf("Digite 2 numeros e 1 sinal para fazer a operacao: ");
-    scanf("%f %f %c", &a, &b, &sinal);
-    switch (sinal) {
+int main() {
+    float a, b, resultado;
+    char operacao;
+
+    printf("Digite os numeros que deseja incluir na operacao: \n");
+    scanf("%f %f", &a, &b);
+    printf("Digite a operacao que deseja realizar: \n");
+    scanf(" %c", &operacao);
+
+    switch (operacao) {
         case '+':
-            printf("O resultado conta e %f", a+b);
-        break;
+            resultado = a + b;
+            break;
         case '-':
-            printf("O resultado conta e %f", a-b);
-        break;
+            resultado = a - b;
+            break;
         case '*':
-            printf("O resultado conta e %f", a*b);
-        break;
-        case '/':    
-            printf("O resultado conta e %f", a/b);
-        break;
+            resultado = a * b;
+            break;
+        case '/':
+            resultado = a / b;
+            break; 
         default:
-            printf("Operador Invalido.\n");
-        break;    
+            break;
     }
 
-    return 0;
+    printf("O resultado e %.2f", resultado);
 }

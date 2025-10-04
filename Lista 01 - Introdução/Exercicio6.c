@@ -1,35 +1,29 @@
 #include <stdio.h>
 #include <math.h>
 
-/*Calcular as raízes da equaçao de 2 grau*/
-float calcular_delta (float a, float b, float c);
-float calcular_raizes (float a, float b, float c, float delta);
+//Calcular as raízes da equaçao de 2 grau
 
-int main () {
-    float a, b, c, delta, x, x1, x2;
-    printf("Passe os valores de parametro da funcao: a, b, c.\n");
-    scanf("%f %f %f", &a, &b, &c);
-    delta = calcular_delta (a, b, c);
-    if (delta > 0) {
-        x1 = (-b + sqrt(delta))/2*a;
-        x2 = (-b - sqrt(delta))/2*a;
-        printf("As raizes da funcao sao; x1 = %f e x2 = %f", x1, x2);
-    }
+int main() {
+    int a, b, c, delta;
+
+    printf("Digite o valor dos coeficientes a, b, c da funcao: \n");
+    scanf("%d %d %d", &a, &b, &c);
+
+    delta = pow(b, 2) - (4*a*c);
     if (delta == 0) {
-        x = (-b + sqrt(delta))/2*a;
-        printf("A funcao possui apenas 1 raiz real; x = %f", x);
+        double raiz = -b/2*a;
+        printf("%.1f e a raiz da funcao.", raiz);
+    }
+    if (delta > 0) {
+        double raiz1 = (-b+sqrt(delta))/(2*a);
+        double raiz2 = (-b-sqrt(delta))/(2*a);
+        printf("%.1f, %.1f sao as raizes da funcao.", raiz1, raiz2);
     }
     if (delta < 0) {
-        printf("A funcao nao possui raiz real.");
+        printf("A funcao nao possui raizes reais.");
     }
 
     return 0;
-}
-
-float calcular_delta (float a, float b, float c) {
-    float delta;
-    delta = (b*b) - (4 * a * c);    
-    return delta;
 }
 
 

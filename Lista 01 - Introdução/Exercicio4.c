@@ -1,33 +1,32 @@
 #include <stdio.h>
 
-/*Receber 1 operação (+,-,*,/) e 2 números e imprimir o resultado da operação*/
+//Receber 3 notas e indicar se está aprovado, de VS ou reprovado.
 
-float calcular_media (float a, float b, float c);
+float calcula_media(float a, float b, float c);
 
-int main () {
-    float a, b, c, media;
-    do {
-       printf("Digite suas 3 notas: ");
-       scanf("%f %f %f", &a, &b, &c); 
-    } while ((a < 0) || (b < 0) || (c < 0));
-    
-    media = calcular_media(a, b, c);
-    if (media >= 6.0f) {
-        printf("Esta aprovado.\n");
+int main() {
+    float p1, p2, p3, media;
+
+    printf("Digite as 3 notas das provas: \n");
+    scanf("%f %f %f", &p1, &p2, &p3);
+
+    media = calcula_media(p1, p2, p3);
+    if (media > 6) {
+        printf("O aluno esta aprovado! Media = %.2f", media);
     }
-    if ((media < 6.0f) && (media >= 4.0f)) {
-        printf("Esta de VS.\n");
+    if (media < 6 && media >= 4) {
+        printf("O aluno esta de VS. Media = %.2f", media);
     }
-    if (media < 4.0f) {
-        printf("Esta reprovado.");
+    if (media < 4) {
+        printf("O aluno esta reprovado! Media = %.2f", media);
     }
 
     return 0;
 }
 
-float calcular_media (float a, float b, float c) {
-    float media;
-    media = (a+b+c)/3;
+
+float calcula_media(float p1, float p2, float p3) {
+    float media = (p1 + p2 + p3) / 3.0;
 
     return media;
 }
