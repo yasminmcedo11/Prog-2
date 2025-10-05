@@ -1,38 +1,34 @@
 #include <stdio.h>
 
-int main () {
-    int x, z, i, x1, qtd_somada = 1;
-    printf("Digite o valor de x e de z, respectivamente\n");
-    scanf("%d %d", &x, &z);
-    while (z < x) {
-        printf("Digite um novo valor para z");
-        scanf("%d", &z);
-    }
-    i = x;
-    x1 = x;
-    while (x < z) {
-        x = x + i;
-        i++;
-        qtd_somada += 1;
-    }
-    printf("%d (%d+", qtd_somada, x1);
-    for (i = 0; i <= qtd_somada; i++) {
-        if (i == 1) {
-            x1 = x1 + i;
-            printf("%d+", x1);
-        }
-        else {
-            if (i == qtd_somada) {
-                x1 += 1;
-                printf("%d", x1);
-            }
-            else {
-                x1 += 1;
-                printf("%d+", x1);
-            }
-        }    
-    }
-    printf("=%d)", x+qtd_somada-1);
+int main() {
+    int x, x_inicial, z, soma = 0, numeros = 0;
 
+    do {
+       printf("Digite os valores de X e Z: \n");
+       scanf("%d %d", &x, &z); 
+    } while (x > x);
+    x_inicial = x;
+
+    while (1) {
+        soma += x;
+        x++;
+        numeros++;
+        if (soma >= z) {
+            break;
+        }
+    }
+
+    printf("%d ", numeros);
+    for (int i = 0; i < numeros; i++) {
+        if (i == 0) {
+            printf("(%d+", i+x_inicial);
+        } else if (i == numeros-1) {
+            printf("%d", i+x_inicial);
+        } else {
+            printf("%d+", i+x_inicial);
+        }
+    }
+    printf("=%d)", soma);
+    
     return 0;
 }

@@ -1,24 +1,24 @@
 #include <stdio.h>
 
-/*Fazer um programa para descobrir se um numero e primo*/
+//Fazer um programa para descobrir se um numero e primo
 
-int main () {
-    int a;
-    int i = 0;
-    int divisores = 0;
-    printf("Digite um numero: \n");
-    scanf("%d", &a);
-    while (i <= a) {
-        i +=1;
-        if (a%i == 0) {
-            divisores += 1;
+int main() {
+    int numero, divisores = 0;
+
+    printf("Digite o numero que deseja analisar: \n");
+    scanf("%d", &numero);
+
+    for (int i = 1; i <= numero; i++) {
+        if (numero % i == 0) {
+            divisores++;
         }
     }
-    if (divisores > 2) {
+    
+    if(divisores <= 2) {
+        printf("NUMERO PRIMO");
+    } else {
         printf("NUMERO NAO PRIMO");
     }
-    else {
-        printf("NUMERO PRIMO");
-    }
+
     return 0;
 }

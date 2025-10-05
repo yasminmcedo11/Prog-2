@@ -1,20 +1,23 @@
 #include <stdio.h>
 
-/*Fazer um programa para calcular a soma dos primeiros n numeros impares*/
+// Fazer um programa para calcular a soma dos primeiros n numeros impares
 
-int main () {
-    int n, i;
-    int soma = 0;
-    int impar = 1;
-    do {
-       printf("Digite um numero: \n");
-       scanf("%d", &n); 
-    } while (n < 0);
-    for (i = 1; i <= n; i++) {
-        soma += impar; 
-        impar += 2;
+int main() {
+    int n, n_inicial, soma = 0, i = 1;
+
+    printf("Digite o numero da sequencia que deseja analisar: \n");
+    scanf("%d", &n);
+    n_inicial = n;
+
+    while (n != 0) {
+        if (i % 2 != 0) {
+            soma += i;
+            n--;
+        }
+        i++;
     }
-    printf("O total da soma e %d", soma);
 
-    return 0; 
+    printf("A soma dos primeiros %d numeros e %d.\n", n_inicial, soma);
+
+    return 0;
 }

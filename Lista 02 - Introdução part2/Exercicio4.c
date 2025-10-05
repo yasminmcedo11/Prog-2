@@ -1,35 +1,44 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
-int main () {
-    char letra; 
-    char vetorc[26] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l' , 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
-    int numero, i, letra1; 
-    int vetorn[26] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26};
-    srand(time(NULL));
-    numero = rand()%26;
-    printf("Tente acertar a letra sorteada\n");
-    scanf("%c", &letra);
-    for (i = 1; i <= 26; i++) {
-        if (letra == vetorc[i]) {
-            letra1 = vetorn[i];
-        }
+// Faça um programa que informe se a letra escolhida é maior, menor ou igual a sorteada
+
+int maior_ou_menor(char l1, char l2);
+
+int main() {
+    char letra_escolhida, letra_sorteada;
+    int resultado;
+
+    srand(time(NULL)); 
+    letra_sorteada = 'a' + rand() % 26;
+
+    printf("Digite a letra que voce acha que sera sorteada: \n");
+    scanf(" %c", &letra_escolhida);
+
+    resultado = maior_ou_menor(letra_escolhida, letra_sorteada);
+    if (resultado == 0) {
+        printf("Parabens, voce acertou a letra sorteada.");
     }
-    while (numero != letra1) {
-        if (letra1 > numero) {
-            printf("A letra sorteada e menor\n");
-        }
-        else {
-            printf("A letra sorteada e maior\n");
-        }
-        scanf("%c", &letra);
-        for (i = 1; i <= 26; i++) {
-            if (letra == vetorc[i]) {
-                letra1 = vetorn[i];
-            }
-        }
+    if (resultado == 1) {
+        printf("A letra sorteada e menor que a escolhida. sorteada = %c, escolhida = %c.", letra_sorteada, letra_escolhida);
     }
-    printf("Letra encontrada\n");
+    if (resultado == -1) {
+        printf("A letra sorteada e maior que a escolhida. sorteada = %c, escolhida = %c.", letra_sorteada, letra_escolhida);
+    }
+
 
     return 0;
+}
+
+int maior_ou_menor(char l1, char l2) {
+    if (l1 > l2) {
+        return 1;
+    }
+    if (l1 < l2) {
+        return -1;
+    }
+    if (l1 == l2) {
+        return 0;
+    }
 }
